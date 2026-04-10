@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuario Digital 2024</title>
+    <style>
+        /* --- ESTILOS (CSS) --- */
+        :root {
+            --primario: #2c3e50;
+            --acento: #3498db;
+            --fondo: #f4f7f6;
+            --blanco: #ffffff;
+            --texto-suave: #777;
+        }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: var(--fondo);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Barra de Navegación */
+        .navbar {
+            background: var(--primario);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-links { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--acento); }
+
+        /* Hero / Portada (Requisito 1) */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1523050853063-bd8012fec04a?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; max-width: 600px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: var(--primario); }
+        
+        /* Grid de Alumnos (Requisito 2) */
+        .grid-alumnos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--blanco);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+        .foto-alumno { width: 100%; height: 320px; object-fit: cover; background: #eee; }
+        .info { padding: 20px; }
+        .info h3 { margin: 0 0 10px 0; color: var(--acento); }
+        .label { font-weight: bold; color: var(--texto-suave); }
+
+        /* Secciones de Contenido (Requisito 3, 4, 5) */
+        .seccion { padding: 80px 0; border-top: 1px solid #ddd; }
+        
+        .galeria-grupal { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .galeria-grupal img { width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        .lista-maestros { list-style: none; padding: 0; max-width: 800px; margin: 0 auto; }
+        .maestro-item { background: white; padding: 20px; margin-bottom: 15px; border-radius: 10px; border-left: 5px solid var(--acento); }
+
+        .frase-box { font-style: italic; background: #eef2f3; padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 20px; }
+
+        /* Footer y Créditos (Requisito 6) */
+        footer { background: var(--primario); color: white; text-align: center; padding: 3rem 1rem; margin-top: 50px; }
+        .creditos { font-size: 0.9rem; color: #bdc3c7; margin-top: 10px; }
+
+        @media (max-width: 768px) {
+            .galeria-grupal { grid-template-columns: 1fr; }
+            .nav-links { display: none; } 
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div style="font-size: 1.5rem; font-weight: bold;">PROM 2024</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#alumnos">Grupo</a></li>
+            <li><a href="#momentos">Momentos</a></li>
+            <li><a href="#recuerdos">Recuerdos</a></li>
+            <li><a href="#maestros">Maestros</a></li>
+        </ul>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <h1>Cobaeh Zapotlan</h1>
+        <h2>Generación 2023 - 2026</h2>
+        <p>¡Bienvenidos a nuestro anuario digital! Un espacio para revivir los momentos, las risas y los logros que compartimos como grupo.</p>
+    </header>
+
+    <div class="container">
+        
+        <h2 id="alumnos">Nuestros Graduados</h2>
+        <div class="grid-alumnos" id="contenedor-alumnos">
+            </div>
+
+        <section id="momentos" class="seccion">
+            <h2>Momentos Especiales</h2>
+            <div class="galeria-grupal">
+                <div>
+                    <img src="grupal1.jpg" alt="Convivencia">
+                    <p align="center"><strong>El mejor día</strong></p>
+                </div>
+                <div>
+                    <img src="grupal3.jpg" alt="Graduación">
+                    <p align="center"><strong>Día de muertos</strong></p>
+                </div>
+ <div>
+                    <img src="diana3.jpg" alt="Convivencia">
+                    <p align="center"><strong>Convivencia</strong></p>
+                </div>
+ <div>
+                    <img src="diana2.jpg" alt="Convivencia">
+                    <p align="center"><strong>Las chicas</strong></p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="recuerdos" class="seccion">
+            <h2>Frases y Recuerdos</h2>
+            <div class="frase-box">
+                <p>"No es un adiós, sino un hasta luego."</p>
+                <small>- Frase de la generación</small>
+            </div>
+            <div class="frase-box">
+                <p><strong>Anécdota:</strong> El día que todo el salón se puso de acuerdo para...</p>
+            </div>
+        </section>
+
+        <section id="maestros" class="seccion">
+            <h2>Nuestros Maestros</h2>
+            <div class="lista-maestros">
+                <div class="maestro-item">
+                    <strong>Prof. Mario Martinez</strong> - "Gracias por guiarnos en este camino y por sus grandes enseñanzas."
+                </div>
+                <div class="maestro-item">
+                    <strong>Profa. Vianey Reynoso</strong> - "Su dedicación hizo la diferencia en nuestra formación profesional."
+                </div>
+            </div>
+                <div class="maestro-item">
+                    <strong>Prof. Rafael Arista</strong> - "Un gran maestro es quien deja huella en el corazón, no solo en la libreta."
+                </div>
+ <div class="maestro-item">
+                    <strong>Prof. Roberto Rodriguez</strong> - "No solo nos dieron respuestas, nos enseñaron a hacernos las preguntas correctas."
+                </div>
+ <div class="maestro-item">
+                    <strong>Prof. Martha Monroy</strong> - "Gracias por jamás dudar de nuestras capacidades."
+                </div>
+ <div class="maestro-item">
+                    <strong>Prof. Angelina Ortega</strong> - "Más que clases, fueron anecdotas grandiosas a su lado."
+                </div>
+ <div class="maestro-item">
+                    <strong>Prof. Augusto Hernandez</strong> - "El mejor camino que pudimos escoger fueron sus consejos."
+                </div>
+ <div class="maestro-item">
+                    <strong>Prof. Antonio Sosa</strong> - "Entendimos que los regaños siempre fueron para nuestra formación."
+                </div>
+ <div class="maestro-item">
+                    <strong>Prof. Arminda Dorantes</strong> - "Gracias por el apoyo a nuestas dudas."
+                </div>
+
+        </section>
+
+              </div>
+
+    <footer>
+        <p><strong>Anuario Digital &copy; 2024</strong></p>
+        <div class="creditos">
+            Creado por: [Diana Valentina Neri Santiago]<br>
+            Grupo: [6102] 
+        </div>
+    </footer>
+
+    <script>
+        // --- Datos de los Alumnos ---
+        // He configurado el campo 'foto' con el nombre de cada uno
+        const listaAlumnos = [
+            { nombre: "Erick Aparicio De Lucio", carrera: "Finanzas", cumple: "2 Junio", foto: "erick.jpg" },
+            { nombre: "Gerardo Ismael Arteaga Chavez", carrera: "Ingeniería Civil", cumple: "28 Septiembre", foto: "gerardo.jpg" },
+            { nombre: "Yasmin Camargo Hernández", carrera: "Nutrición", cumple: "15 Marzo", foto: "yasmin.jpg" },
+            { nombre: "Jose Eduardo Cervantes Ibarra", carrera: "Médico Veterinario", cumple: "17 Junio", foto: "eduardo.jpg" },
+            { nombre: "Nathaly Ximena Coria Rangel", carrera: "Enfermería", cumple: "22 Febrero", foto: "ximena.jpg" },
+            { nombre: "Cynthia Cruz Hernández", carrera: "Militar", cumple: "4 Diciembre", foto: "cynthia.jpg" },
+            { nombre: "Emmanuel De Lucio Granados", carrera: "Ingeniero Industrial", cumple: "7 Abril", foto: "emmanuel.jpg" },
+            { nombre: "Lisandro Leonel Diaz Leon", carrera: "Gastronomía", cumple: "28 Diciembre", foto: "lisandro.jpg" },
+            { nombre: "Zoé Abigail Ferreyra Meneses", carrera: "Ciencias De La Educación", cumple: "11 Octubre", foto: "zoe.jpg" },
+            { nombre: "Yesica Garcia Rojas", carrera: "Ingeniería Aeronáutica", cumple: "25 Mayo", foto: "yesica.jpg" },
+            { nombre: "Irlanda Adalery Garcia Vázquez", carrera: "Idiomas", cumple: "24 Marzo", foto: "irlanda.jpg" },
+            { nombre: "Juan Jose Granados Trejo", carrera: "Nutrición", cumple: "1 Diciembre", foto: "juan.jpg" },
+            { nombre: "Cesar Luis Hernández Chavez", carrera: "Mecánica", cumple: "11 Mayo", foto: "cesar.jpg" },
+            { nombre: "Brayan Yair Hernández Soto", carrera: "Gastronomía", cumple: "29 Septiembre", foto: "brayan.jpg" },
+            { nombre: "Miriam Iturbide Martínez", carrera: "Militar", cumple: "4 Noviembre", foto: "miriam.jpg" },
+            { nombre: "Ian Ramiro Lopez Simón", carrera: "Programación", cumple: "28 Diciembre", foto: "ian.jpg" },
+            { nombre: "Aranza Lugardo Cortes", carrera: "Animación", cumple: "10 Mayo", foto: "aranza.jpg" },
+            { nombre: "Dana Alexandra Meléndez Cureño", carrera: "Ingeniería Agrónoma", cumple: "19 Octubre", foto: "dana.jpg" },
+            { nombre: "Geraldine Ximena Moreno Velázquez", carrera: "Militar", cumple: "5 Mayo", foto: "geraldine.jpg" },
+            { nombre: "Diana Valentina Neri Santiago", carrera: "Enfermería", cumple: "12 Marzo", foto: "diana.jpg" },
+            { nombre: "Fernando Ochoa Pacheco", carrera: "Medicina", cumple: "1 Octubre", foto: "fernando.jpg" },
+            { nombre: "Kelly Sarahi Olmedo Abasolo", carrera: "Ingeniería Mecánica", cumple: "22 Diciembre", foto: "kelly.jpg" },
+            { nombre: "Jose De Jesús Osorio González", carrera: "Administración", cumple: "12 Febrero", foto: "jose.jpg" },
+            { nombre: "Dafne Citlali Pérez Francisco", carrera: "Psicología", cumple: "18 Marzo", foto: "dafne.jpg" },
+            { nombre: "Luis Gerardo Pineda Cruz", carrera: "Ingeniería", cumple: "5 Agosto", foto: "menchaca.jpg" },
+            { nombre: "Marvin Imanol Pineda Rosales", carrera: "Mecánica Automotriz", cumple: "30 Junio", foto: "marvin.jpg" },
+            { nombre: "Jehieli Pineda Santiago", carrera: "Derecho", cumple: "22 Abril", foto: "jehieli.jpg" },
+            { nombre: "Asdrúbal Rodriguez Evia", carrera: "Finanzas", cumple: "18 Mayo", foto: "asdrubal.jpg" },
+            { nombre: "Carlos Valentín Santiago Flores", carrera: "Mecánica", cumple: "9 Septiembre", foto: "carlos.jpg" },
+            { nombre: "Elizabeth Vargas Hernández", carrera: "Militar", cumple: "14 Mayo", foto: "elizabeth.jpg" }
+        ];
+        const contenedor = document.getElementById('contenedor-alumnos');
+
+        // Renderizado dinámico
+        listaAlumnos.forEach(alumno => {
+            contenedor.innerHTML += `
+                <div class="card">
+                    <img src="${alumno.foto}" class="foto-alumno" alt="${alumno.nombre}">
+                    <div class="info">
+                        <h3>${alumno.nombre}</h3>
+                        <p><span class="label">Carrera:</span> ${alumno.carrera}</p>
+                        <p><span class="label">Cumpleaños:</span> ${alumno.cumple}</p>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
